@@ -8,7 +8,10 @@ class User < ApplicationRecord
   validates :profile, presence: true
   validates :occupation, presence: true
   validates :position, presence: true
+  validates :password, length: { minimum: 6 }
+  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 
   has_many :prototypes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  
 end

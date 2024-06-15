@@ -13,8 +13,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user.name
-    @prototypes = current_user.prototypes
+    @user = User.find(params[:id])
+    @prototype = @user.prototypes.includes(:user)
   end
 
   private
